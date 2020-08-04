@@ -1,0 +1,52 @@
+
+
+$(document).ready(function() {
+    $("#search-btn").on("click", function(){
+        console.log("Search-Btn Clicked");
+
+        const searchedCity = $("#city-search").val();
+
+        const apiKey = "a929eb9991d42b85d4aef4095c82b578";
+        const queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&appid=" + apiKey;
+        console.log(queryURL);
+
+        // Create searched city array
+        searchedCities = [];
+        
+
+
+        // Make query to weather api using city searched
+            // replace static values with weather API data retrived
+            // Make separate query for UV
+        function searchCity(searchedCity) {
+            $.ajax({
+                type: "GET",
+                url: "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&appid=" + apiKey,
+                datatype: "json"
+            })
+            .then((data) => {
+                console.log(data)
+                // Display Data
+                $("#temp").append(data.main.temp);
+                $("#humidity").append(data.main.humidity);
+                $("#windspeed").append(data.wind.speed);
+
+            })
+
+            
+        }
+        searchCity(searchedCity);
+        
+
+        // Add searched city to unordered list as a button
+            // Store in Local Storage
+        
+        //  Add 5-day forecast
+
+
+
+
+
+    })
+});
+
