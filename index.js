@@ -9,9 +9,14 @@ $(document).ready(function() {
         const apiKey = "a929eb9991d42b85d4aef4095c82b578";
         const queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&appid=" + apiKey;
         console.log(queryURL);
+        // clear the input
+        $("#city-search").val("");
+        searchCity(searchedCity);
 
         // Create searched city array
         searchedCities = [];
+        // Create button for searched city and append it to the beginning of the Searched City Element
+
         
 
 
@@ -48,7 +53,7 @@ $(document).ready(function() {
 
             
         }
-        searchCity(searchedCity);
+        
         
 
         // Add searched city to unordered list as a button
