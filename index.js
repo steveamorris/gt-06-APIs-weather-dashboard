@@ -25,13 +25,26 @@ $(document).ready(function() {
                 datatype: "json"
             })
             .then((data) => {
-                console.log(data)
+                // console.log(data)
                 // Display Data
                 $("#temp").append(data.main.temp);
                 $("#humidity").append(data.main.humidity);
                 $("#windspeed").append(data.wind.speed);
 
+                $.ajax({
+                    type: "GET",
+                    url: "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + data.coord.lat + "&lon=" + data.coord.lon,
+                    datatype: "json"
+                })
+                .then((uvdata) => {
+                    console.log(uvdata.value);
+                    $("#UVIndex").append(uvdata.value);
+
+                })
+
             })
+
+
 
             
         }
